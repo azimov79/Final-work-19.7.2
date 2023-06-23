@@ -44,7 +44,7 @@ def test_get_api_key_with_wrong_email_and_wrong_password(email=invalid_email, pa
     print(f'Статус {status} для теста с неверными email и паролем')
 
 # Test 6
-def test_add_pet_valid_data_no_photo(name='Котюня_без_фото', animal_type='Котя', age='1'):
+def test_add_pet_valid_data_no_photo(name='Кот_без_фото', animal_type='Котя', age='1'):
     _, api_key = pf.get_api_key(valid_email, valid_password)
     status, result = pf.add_new_pet_without_photo(api_key, name, animal_type, age)
 
@@ -90,7 +90,7 @@ def test_delete_pet():
     _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
 
     if len(my_pets['pets']) == 0:
-        pf.add_new_pet(auth_key, "Котичка", "кот", "2", "images/cat2.jpg")
+        pf.add_new_pet(auth_key, "Котяра", "кот", "2", "images/cat2.jpg")
         _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
 
     # Отправляем запрос на удаление первого питомца из списка
@@ -105,7 +105,7 @@ def test_delete_pet():
     assert pet_id not in my_pets.values()
 
 # Test 10
-def test_add_new_pet_photo_big_age(name="Volk", animal_type="sova", age="2301"):
+def test_add_new_pet_photo_big_age(name="Vanya", animal_type="filin", age="2301"):
         _, auth_key = pf.get_api_key(valid_email, valid_password)
 
         status, result = pf.add_new_pet_photo(auth_key, name, animal_type, age)
